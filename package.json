@@ -1,0 +1,25 @@
+{
+    "name": "pixi-animation",
+    "version": "0.0.1",
+    "description": "pixi-animation",
+    "scripts": {
+        "dev": "webpack-dev-server --mode=development",
+        "build": "webpack --mode=production",
+        "typecheck": "tsc -p ./tsconfig.json --noEmit"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@swc/core": "^1.3.24",
+        "copy-webpack-plugin": "^11.0.0",
+        "html-webpack-plugin": "^5.5.0",
+        "swc-loader": "^0.2.3",
+        "ts-loader": "^9.5.1",
+        "typescript": "^4.9.5",
+        "webpack": "^5.93.0",
+        "webpack-cli": "~5.0.1",
+        "webpack-dev-server": "^4.11.1"
+    },
+    "dependencies": {
+        "pixi.js": "^7.0.5"
+    }
+}

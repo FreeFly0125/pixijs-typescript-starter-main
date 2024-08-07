@@ -1,6 +1,6 @@
 import { Application } from 'pixi.js';
 import { Showdown } from './scenes/showdown';
-
+import { Wheel } from './scenes/wheel';
 
 const initPixiApplication = () => {
   const app = new Application({
@@ -13,6 +13,10 @@ const initPixiApplication = () => {
   const showdown = new Showdown(app);
   app.stage.addChild(showdown);
 
+  // Instantiate the Wheel class
+  const spinDataUrl = 'data/spin.json'; // The static JSON file containing spin results
+  const wheel = new Wheel(app, spinDataUrl);
+  app.stage.addChild(wheel);
 
   // Change the canvas size on every resize so that things won't be stretched
   window.addEventListener('resize', () => {
@@ -22,6 +26,14 @@ const initPixiApplication = () => {
     showdown.mustDrop.x = app.renderer.width / 2 - showdown.mustDrop.width / 2;
     showdown.mustDrop.y = app.renderer.height - 100;
   
+    wheel.width = window.innerWidth;
+    wheel.height = window.innerHeight;
+    wheel.wheel.x = app.renderer.width / 2;
+    wheel.wheel.y = app.renderer.height / 2;
+    wheel.marker.x = wheel.wheel.x;
+    wheel.marker.y = wheel.wheel.y - wheel.wheel.height / 2 - 20;
+    wheel.spinButton.x = app.renderer.width / 2;
+    wheel.spinButton.y = wheel.wheel.y + wheel.wheel.height / 2 + 50;
   });
 
   return app;
